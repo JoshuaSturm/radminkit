@@ -1,0 +1,26 @@
+{
+  "name": "radminkit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoshuaSturm/radminkit.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoshuaSturm/radminkit/issues"
+  },
+  "homepage": "https://github.com/JoshuaSturm/radminkit#readme",
+  "dependencies": {
+    "@popperjs/core": "^2.9.2",
+    "bootstrap": "^5.0.2",
+    "feather-icons": "^4.28.0",
+    "simplebar": "^5.3.4"
+  }
+}
