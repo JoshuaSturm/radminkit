@@ -8,6 +8,9 @@ Authors@R:
            role   = c("aut", "cre"))
 Description: A Shiny dashboard templated inspired by Adminkit
 License: MIT + file LICENSE
+Imports:
+    shiny,
+    htmltools
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
