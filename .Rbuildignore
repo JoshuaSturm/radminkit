@@ -5,3 +5,4 @@
 ^revdep$
 ^ISSUE_TEMPLATE\.md$
 ^\.github$
+^\.pre-commit-config\.yaml$

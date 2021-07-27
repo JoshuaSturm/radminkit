@@ -2,9 +2,10 @@ Package: radminkit
 Title: A Shiny Dashboard Template Inspired By Adminkit
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Joshua",
+    person(given  = "Joshua",
            family = "Sturm",
-           role = c("aut", "cre"))
+           email  = "22535419+JoshuaSturm@users.noreply.github.com",
+           role   = c("aut", "cre"))
 Description: A Shiny dashboard templated inspired by Adminkit
 License: MIT + file LICENSE
 Encoding: UTF-8
