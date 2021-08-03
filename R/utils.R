@@ -22,14 +22,14 @@ addDeps <- function(x) {
     htmlDependency(
       name = "appcss",
       version = packageVersion("radminkit"),
-      src = system.file("srcjs/css", package = "radminkit"),
-      stylesheet = "style.css"
+      src = system.file("inst/css", package = "radminkit"),
+      stylesheet = "radminkit.min.css"
     ),
     htmlDependency(
       name = "appjs",
       version = packageVersion("radminkit"),
-      src = system.file("srcjs/js", package = "radminkit"),
-      script = "script.js"
+      src = system.file("inst/js", package = "radminkit"),
+      script = "radminkit.min.js"
     )
   )
 
@@ -90,6 +90,19 @@ validateTabName <- function(name) {
   if (grepl(".", name, fixed = TRUE)) {
     stop("tabName must not have a '.' in it.")
   }
+}
+
+# Valid badge options
+validBadges <- c(
+  "primary", "secondary",
+  "success", "danger",
+  "warning", "info",
+  "light", "dark"
+)
+
+# Append to an element's class
+addClass <- function(element, append) {
+  return(paste(c(element, append), collapse = " "))
 }
 
 #' #' @export
