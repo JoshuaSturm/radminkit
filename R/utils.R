@@ -22,13 +22,13 @@ addDeps <- function(x) {
     htmlDependency(
       name = "appcss",
       version = packageVersion("radminkit"),
-      src = system.file("css", package = "radminkit"),
+      src = system.file("srcjs/css", package = "radminkit"),
       stylesheet = "style.css"
     ),
     htmlDependency(
       name = "appjs",
       version = packageVersion("radminkit"),
-      src = system.file("js", package = "radminkit"),
+      src = system.file("srcjs/js", package = "radminkit"),
       script = "script.js"
     )
   )

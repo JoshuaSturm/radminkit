@@ -39,3 +39,9 @@ vignettes/*.pdf
 .Renviron
 .Rproj.user
 docs
+
+#  Node modules
+/node_modules/
+
+# Custom bootstrap changes
+altbootstrap.txt

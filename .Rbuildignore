@@ -8,4 +8,14 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^srcjs$
+^node_modules$
+^package\.json$
+^package-lock\.json$
+^webpack\.common\.js$
+^webpack\.dev\.js$
+^webpack\.prod\.js$
+^\.eslintrc$
+^altbootstrap$
+^postcss\.config$
 ^\.pre-commit-config\.yaml$
