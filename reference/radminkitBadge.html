@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • radminkit</title>
+<title>Create a badge — radminkitBadge • radminkit</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Create a badge — radminkitBadge" />
+<meta property="og:description" content="Create a badge" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -103,108 +104,82 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Create a badge</h1>
+    
+    <div class="hidden name"><code>radminkitBadge.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Create a badge</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>radminkitBadge</span><span class='op'>(</span>
+  type <span class='op'>=</span> <span class='st'>"secondary"</span>,
+  intent <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  pill <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  darktext <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  text <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="radminkitBadge.html">radminkitBadge()</a></code> </p>
-        </td>
-        <td><p>Create a badge</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="radminkitBody.html">radminkitBody()</a></code> </p>
-        </td>
-        <td><p>Create a radminkit body</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="radminkitCard.html">radminkitCard()</a></code> </p>
-        </td>
-        <td><p>Create a Bootstrap 5 card</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="radminkitHeader.html">radminkitHeader()</a></code> </p>
-        </td>
-        <td><p>Create a radminkit header</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="radminkitPage.html">radminkitPage()</a></code> </p>
-        </td>
-        <td><p>Create a radminkit page</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="radminkitSidebar.html">radminkitSidebar()</a></code> <code><a href="radminkitSidebar.html">radminkitSidebar()</a></code> </p>
-        </td>
-        <td><p>Create a radminkit sidebar</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sidebarItem.html">sidebarItem()</a></code> <code><a href="sidebarItem.html">sidebarItem()</a></code> </p>
-        </td>
-        <td><p>Create a section entry</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sidebarSection.html">sidebarSection()</a></code> <code><a href="sidebarSection.html">sidebarSection()</a></code> </p>
-        </td>
-        <td><p>Create a sidebar section to split menus by category.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sidebarTabs.html">sidebarTabs()</a></code> <code><a href="sidebarTabs.html">sidebarTabs()</a></code> </p>
-        </td>
-        <td><p>Create a sidebar tab menu</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tabItem.html">tabItem()</a></code> </p>
-        </td>
-        <td><p>One tab to put inside a tab items container</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tabItems.html">tabItems()</a></code> </p>
-        </td>
-        <td><p>A container for tab items</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="updateTabItems.html">updateTabItems()</a></code> </p>
-        </td>
-        <td><p>Change the selected tab on the client</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>type</th>
+      <td><p>Type of badge. For included Bootstrap options, see details</p></td>
+    </tr>
+    <tr>
+      <th>intent</th>
+      <td><p>(boolean) Is the badge intended to signal a message to the user?</p></td>
+    </tr>
+    <tr>
+      <th>pill</th>
+      <td><p>(boolean) Should the badge have a rounded pill shape?</p></td>
+    </tr>
+    <tr>
+      <th>darktext</th>
+      <td><p>(boolean) Should the badge use dark text? This is often
+useful for brightly coloured badges.</p></td>
+    </tr>
+    <tr>
+      <th>text</th>
+      <td><p>Text to display in the badge</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Type</h3>
+
+
+<p>Valid options for type include:</p><ul>
+<li><p>primary</p></li>
+<li><p>secondary</p></li>
+<li><p>success</p></li>
+<li><p>danger</p></li>
+<li><p>warning</p></li>
+<li><p>info</p></li>
+<li><p>light</p></li>
+<li><p>dark</p></li>
+</ul>
+
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Intent</h3>
+
+
+<p>This flag is to indicate whether your badge is meant to alert the user.
+For example, did you choose the danger badge for the colour scheme, or to
+warn the user of something. If it is the latter, this flag will add an
+accessibility class (<code>.visually-hidden</code>) to the badge.</p>
+
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>https://getbootstrap.com/docs/5.0/badge/</p></div>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
