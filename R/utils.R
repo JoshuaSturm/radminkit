@@ -4,36 +4,36 @@
 #
 
 # Add dependencies
-#' @importFrom htmltools htmlDependency htmlDependencies
-appendDependencies <- function(x, value) {
-  if (inherits(value, "html_dependency"))
-    value <- list(value)
+# #' @importFrom htmltools htmlDependency htmlDependencies
+# appendDependencies <- function(x, value) {
+#   if (inherits(value, "html_dependency")) {
+#     value <- list(value)
+#   }
 
-  old <- attr(x, "html_dependencies", TRUE)
+#   old <- attr(x, "html_dependencies", TRUE)
 
-  htmlDependencies(x) <- c(old, value)
-  x
-}
+#   htmlDependencies(x) <- c(old, value)
+#   x
+# }
 
 # Add dashboard dependencies to a tag object
 addDeps <- function(x) {
-
   dashboardDeps <- list(
     htmlDependency(
       name = "appcss",
-      version = packageVersion("radminkit"),
+      version = utils::packageVersion("radminkit"),
       src = system.file("inst/css", package = "radminkit"),
       stylesheet = "radminkit.min.css"
     ),
     htmlDependency(
       name = "appjs",
-      version = packageVersion("radminkit"),
+      version = utils::packageVersion("radminkit"),
       src = system.file("inst/js", package = "radminkit"),
       script = "radminkit.min.js"
     )
   )
 
-  appendDependencies(x, dashboardDeps)
+  attachDependencies(x, dashboardDeps, append = TRUE)
 }
 
 #' Assert that a tag has specified properties
@@ -53,8 +53,8 @@ tagAssert <- function(tag, type = NULL, class = NULL, allowUI = TRUE) {
 
   # Skip dynamic output elements
   if (allowUI &&
-      (hasCssClass(tag, "shiny-html-output") ||
-       hasCssClass(tag, "shinydashboard-menu-output"))) {
+    (hasCssClass(tag, "shiny-html-output") ||
+      hasCssClass(tag, "shinydashboard-menu-output"))) {
     return()
   }
 
@@ -65,7 +65,6 @@ tagAssert <- function(tag, type = NULL, class = NULL, allowUI = TRUE) {
   if (!is.null(class)) {
     if (is.null(tag$attribs$class)) {
       stop("Expected tag to have class '", class, "'")
-
     } else {
       # tagClasses <- strsplit(tag$attribs$class, " ")[[1]]
       # if (!(class %in% tagClasses)) {
@@ -78,8 +77,9 @@ tagAssert <- function(tag, type = NULL, class = NULL, allowUI = TRUE) {
 
 # Return TRUE if a shiny.tag object has a CSS class, FALSE otherwise.
 hasCssClass <- function(tag, class) {
-  if (is.null(tag$attribs) || is.null(tag$attribs$class))
+  if (is.null(tag$attribs) || is.null(tag$attribs$class)) {
     return(FALSE)
+  }
 
   classes <- strsplit(tag$attribs$class, " +")[[1]]
   return(class %in% classes)

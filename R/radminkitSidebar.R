@@ -11,19 +11,17 @@
 #'
 #' @examples
 #' \dontrun{
-#'  radminkitSidebar(title = list(img("path/to/img", alt = "description of image")))
+#' radminkitSidebar(title = list(img("path/to/img", alt = "description of image")))
 #' }
 #'
-#' @importFrom shiny tags validateCssUnit
 #' @export
 #'
 radminkitSidebar <- function(..., title = NULL, width = NULL, header = NULL) {
-
   width <- validateCssUnit(width)
   update_width <- NULL
 
   if (!is.null(width)) {
-    update_width <- tags$head(tags$style(HTML(gsub("_WIDTH_", width, fixed = TRUE, '
+    update_width <- tags$head(style(HTML(gsub("_WIDTH_", width, fixed = TRUE, "
 
       @media (max-width: 991.98px) and (min-width: 1px) {
         .sidebar{
@@ -43,31 +41,31 @@ radminkitSidebar <- function(..., title = NULL, width = NULL, header = NULL) {
         min-width: _WIDTH_;
         max-width: _WIDTH_;
       }
-    '))))
+    "))))
   }
 
-  tags$div(
+  div(
     class = "wrapper",
-    tags$nav(
+    nav(
       class = "sidebar js-sidebar",
       id = "sidebar",
       update_width,
-      tags$div(
+      div(
         class = "sidebar-content js-simplebar",
-          tags$a(
-            class = "sidebar-brand",
-            href = "#",
-            tags$span(
-              class = "align-middle",
-              title
-            )
-          ),
+        a(
+          class = "sidebar-brand",
+          href = "#",
+          span(
+            class = "align-middle",
+            title
+          )
+        ),
         # All sidebar items
         list(...)
-        )
-      ),
+      )
+    ),
     header
-    )
+  )
 }
 
 #' Create a sidebar tab menu
@@ -77,23 +75,19 @@ radminkitSidebar <- function(..., title = NULL, width = NULL, header = NULL) {
 #' @param ... Items to add to the tablist
 #'
 #' @export
+#'
 sidebarTabs <- function(...) {
-
-  do.call(tags$ul, c(class = "list-group", id = "menuTabs", role = "tablist", list(...)))
-
+  do.call(ul, c(class = "list-group", id = "menuTabs", role = "tablist", list(...)))
 }
 
 #' Create a sidebar section to split tabs by category.
 #'
 #' @param label Section name
 #'
-#'
-#' @importFrom shiny tags
 #' @export
 #'
 sidebarSection <- function(label = "Section Label") {
-
-  tags$li(
+  li(
     class = "sidebar-header",
     label
   )
@@ -110,13 +104,12 @@ sidebarSection <- function(label = "Section Label") {
 #' @details
 #' Radminkit uses \href{https://feathericons.com/}{Feather icons}; refer to their site for the full catalogue of options.
 #'
-#' @importFrom shiny tags
 #' @export
+#'
 sidebarItem <- function(..., label = NULL, tabName = NULL, icon = NULL, itemTags = NULL, href = NULL, newTab = TRUE) {
-
   subItems <- list(...)
 
-  if (!is.null(href) + !is.null(tabName) + (length(subItems) > 0) != 1 ) {
+  if (!is.null(href) + !is.null(tabName) + (length(subItems) > 0) != 1) {
     stop("Must have either href, tabName, or sub-items (contained in ...).")
   }
 
@@ -136,17 +129,18 @@ sidebarItem <- function(..., label = NULL, tabName = NULL, icon = NULL, itemTags
     href <- "#"
   } else {
     # If supplied href, set up <a> tag's target
-    if (newtab)
+    if (newTab) {
       target <- "_blank"
+    }
   }
 
   # When there are no submenu items
   if (length(subItems) == 0L) {
     return(
-      tags$li(
+      li(
         class = "sidebar-item",
         # role = "presentation",
-        tags$a(
+        a(
           class = "sidebar-link",
           id = paste0(tabName, "-tab"),
           `data-bs-toggle` = if (isTabItem) "tab",
@@ -154,11 +148,11 @@ sidebarItem <- function(..., label = NULL, tabName = NULL, icon = NULL, itemTags
           href = paste0("#", tabName),
           `role` = if (isTabItem) "tab",
           `aria-controls` = tabName,
-          tags$i(
+          i(
             class = "align-middle",
             `data-feather` = icon
           ),
-          tags$span(
+          span(
             class = "align-middle",
             label
           )
@@ -168,29 +162,28 @@ sidebarItem <- function(..., label = NULL, tabName = NULL, icon = NULL, itemTags
   }
 
   # Where there are submenu items
-  tags$li(
+  li(
     class = "sidebar-item",
-    tags$a(
+    a(
       class = "sidebar-link",
       `data-bs-target` = paste0("#", tabName),
       `data-bs-toggle` = "collapse",
       href = paste0("#", tabName),
-      tags$i(
+      i(
         class = "align-middle",
         `data-feather` = icon
       ),
-      tags$span(
+      span(
         class = "align-middle",
         label
       )
     ),
-    do.call(tags$ul, c(class = "sidebar-dropdown list-group collapse", id = tabName, `data-bs-parent` = "#sidebar", subItems))
+    do.call(ul, c(class = "sidebar-dropdown list-group collapse", id = tabName, `data-bs-parent` = "#sidebar", subItems))
   )
 }
 
 #' @export
 sidebarSubitem <- function(tabName = NULL, href = NULL, icon = NULL) {
-
   if (!is.null(href) && !is.null(tabName)) {
     stop("Can't specify both href and tabName")
   }
@@ -206,14 +199,15 @@ sidebarSubitem <- function(tabName = NULL, href = NULL, icon = NULL) {
     href <- "#"
   } else {
     # If supplied href, set up <a> tag's target
-    if (newtab)
+    if (newTab) {
       target <- "_blank"
+    }
   }
 
-  tags$li(
+  li(
     class = "sidebar-item",
     role = "presentation",
-    tags$a(
+    a(
       class = "sidebar-link",
       id = if (isTabItem) paste0(tabName, "-tab"),
       href = paste0("#", tabName),

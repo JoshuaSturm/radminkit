@@ -10,23 +10,21 @@
 #' Possibilities include:
 #'    A dropdownmenu
 #'
-#' @importFrom shiny tags
 #' @export
 #'
 radminkitHeader <- function(disable = FALSE, body = NULL, ...) {
-
   items <- list(...)
 
-  tags$div(
+  div(
     class = "main",
     style = if (disable) "display: none;",
-    tags$nav(
+    nav(
       class = "navbar navbar-expand navbar-light navbar-bg",
-      tags$a(
+      a(
         class = "sidebar-toggle js-sidebar-toggle",
         tags$i(class = "hamburger align-self-center")
       ),
-      tags$div(
+      div(
         class = "navbar-collapse collapse",
         items
       )

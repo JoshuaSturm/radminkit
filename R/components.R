@@ -28,36 +28,36 @@
 #'
 #' @seealso https://getbootstrap.com/docs/5.0/badge/
 #'
-#' @importFrom shiny tags
 #' @export
 #'
 radminkitBadge <- function(type = "secondary", intent = FALSE, pill = FALSE, darktext = FALSE, text = NULL) {
-
   type <- tolower(type)
 
-  if (!(type %in% validBadges))
+  if (!(type %in% validBadges)) {
     stop("Invalid badge type. See ?radminkitBadge for details.")
+  }
 
   badgeType <- paste0("badge bg-", type)
 
-  if (pill)
+  if (pill) {
     badgeType <- addClass(badgeType, "rounded-pill")
+  }
 
-  if (darktext)
+  if (darktext) {
     badgeType <- addClass(badgeType, "text-dark")
+  }
 
   intentHtml <-
-    tags$span(
+    span(
       class = "visually-hidden",
       paste0(tools::toTitleCase(type), ": ")
     )
 
-  tags$span(
+  span(
     class = badgeType,
     if (intent) intentHtml,
     text
   )
-
 }
 
 
@@ -72,12 +72,11 @@ radminkitBadge <- function(type = "secondary", intent = FALSE, pill = FALSE, dar
 #'
 #' @seealso https://getbootstrap.com/docs/5.0/components/card/
 #'
-#' @importFrom shiny tags
 #' @export
 #'
 radminkitCard <- function(..., title = NULL, subtitle = NULL, header = NULL, footer = NULL, text) {
   headerHtml <-
-    tags$div(
+    div(
       class = "card-header",
       header
     )
@@ -94,10 +93,10 @@ radminkitCard <- function(..., title = NULL, subtitle = NULL, header = NULL, foo
       subtitle
     )
 
-  tags$div(
+  div(
     class = "card",
     if (!is.null(header)) headerHtml,
-    tags$div(
+    div(
       class = "card-body",
       if (!is.null(title)) titleHtml,
       if (!is.null(subtitle)) subtitleHtml,

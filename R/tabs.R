@@ -5,7 +5,9 @@
 #'
 #' @seealso \code{\link{menuItem}}, \code{\link{menuSubItem}},
 #'   \code{\link{tabItem}}. See \code{\link{sidebarMenu}} for a usage example.
+#'
 #' @export
+#'
 tabItems <- function(...) {
   lapply(list(...), tagAssert, class = "tab-pane fade")
 
@@ -23,10 +25,13 @@ tabItems <- function(...) {
 #'
 #' @seealso \code{\link{menuItem}}, \code{\link{menuSubItem}},
 #'   \code{\link{tabItems}}. See \code{\link{sidebarMenu}} for a usage example.
+#'
 #' @export
+#'
 tabItem <- function(tabName = NULL, ...) {
-  if (is.null(tabName))
+  if (is.null(tabName)) {
     stop("Need tabName")
+  }
 
   validateTabName(tabName)
 
@@ -50,40 +55,41 @@ tabItem <- function(tabName = NULL, ...) {
 #' @examples
 #' ## Only run this example in interactive R sessions
 #' if (interactive()) {
-#'
-#' ui <- dashboardPage(
-#'   dashboardHeader(title = "Simple tabs"),
-#'   dashboardSidebar(
-#'     sidebarMenu(
-#'       id = "tabs",
-#'       menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
-#'       menuItem("Widgets", tabName = "widgets", icon = icon("th"))
-#'     ),
-#'     actionButton('switchtab', 'Switch tab')
-#'   ),
-#'   dashboardBody(
-#'     tabItems(
-#'       tabItem(tabName = "dashboard",
-#'         h2("Dashboard tab content")
+#'   ui <- dashboardPage(
+#'     dashboardHeader(title = "Simple tabs"),
+#'     dashboardSidebar(
+#'       sidebarMenu(
+#'         id = "tabs",
+#'         menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
+#'         menuItem("Widgets", tabName = "widgets", icon = icon("th"))
 #'       ),
-#'       tabItem(tabName = "widgets",
-#'         h2("Widgets tab content")
+#'       actionButton("switchtab", "Switch tab")
+#'     ),
+#'     dashboardBody(
+#'       tabItems(
+#'         tabItem(
+#'           tabName = "dashboard",
+#'           h2("Dashboard tab content")
+#'         ),
+#'         tabItem(
+#'           tabName = "widgets",
+#'           h2("Widgets tab content")
+#'         )
 #'       )
 #'     )
 #'   )
-#' )
 #'
-#' server <- function(input, output, session) {
-#'   observeEvent(input$switchtab, {
-#'     newtab <- switch(input$tabs,
-#'       "dashboard" = "widgets",
-#'       "widgets" = "dashboard"
-#'     )
-#'     updateTabItems(session, "tabs", newtab)
-#'   })
-#' }
+#'   server <- function(input, output, session) {
+#'     observeEvent(input$switchtab, {
+#'       newtab <- switch(input$tabs,
+#'         "dashboard" = "widgets",
+#'         "widgets" = "dashboard"
+#'       )
+#'       updateTabItems(session, "tabs", newtab)
+#'     })
+#'   }
 #'
-#' shinyApp(ui, server)
+#'   shinyApp(ui, server)
 #' }
 #' @export
 updateTabItems <- shiny::updateTabsetPanel
