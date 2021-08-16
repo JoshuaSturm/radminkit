@@ -40,8 +40,7 @@
 
 
 <meta property="og:title" content="Create a section entry — sidebarItem" />
-<meta property="og:description" content="Create a section entry
-Create a section entry" />
+<meta property="og:description" content="Create a section entry" />
 
 
 
@@ -114,20 +113,9 @@ Create a section entry" />
 
     <div class="ref-description">
     <p>Create a section entry</p>
-<p>Create a section entry</p>
     </div>
 
     <pre class="usage"><span class='fu'>sidebarItem</span><span class='op'>(</span>
-  <span class='va'>...</span>,
-  label <span class='op'>=</span> <span class='cn'>NULL</span>,
-  tabName <span class='op'>=</span> <span class='cn'>NULL</span>,
-  icon <span class='op'>=</span> <span class='cn'>NULL</span>,
-  itemTags <span class='op'>=</span> <span class='cn'>NULL</span>,
-  href <span class='op'>=</span> <span class='cn'>NULL</span>,
-  newTab <span class='op'>=</span> <span class='cn'>TRUE</span>
-<span class='op'>)</span>
-
-<span class='fu'>sidebarItem</span><span class='op'>(</span>
   <span class='va'>...</span>,
   label <span class='op'>=</span> <span class='cn'>NULL</span>,
   tabName <span class='op'>=</span> <span class='cn'>NULL</span>,
@@ -140,6 +128,15 @@ Create a section entry" />
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>...</th>
+      <td><p>(Optional) additional items to add to the tab
+(e.g. a <code><a href='sidebarSubItem.html'>sidebarSubItem</a></code>)</p></td>
+    </tr>
+    <tr>
+      <th>label</th>
+      <td><p>Text to display on the tab link</p></td>
+    </tr>
     <tr>
       <th>tabName</th>
       <td><p>Name of the tab</p></td>
@@ -157,14 +154,16 @@ Create a section entry" />
       <td><p>Link to tab</p></td>
     </tr>
     <tr>
-      <th>subitems</th>
-      <td><p>Item(s) to add to the sidebar</p></td>
+      <th>newTab</th>
+      <td><p>If <code>href</code> is supplied, should the link open in a new
+browser tab?</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Radminkit uses <a href='https://feathericons.com/'>Feather icons</a>; refer to their site for the full catalogue of options.</p>
+    <p>Radminkit uses <a href='https://feathericons.com/'>Feather icons</a>;
+refer to their site for the full catalogue of options.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
