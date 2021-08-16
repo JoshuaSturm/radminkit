@@ -1,7 +1,7 @@
 #' Create a badge
 #'
 #' @param type Type of badge. For included Bootstrap options, see details
-#' @param intent (boolean) Is the badge intended to signal a message to the user?
+#' @param intent (boolean) Is the badge meant to signal a message to the user?
 #' @param pill (boolean) Should the badge have a rounded pill shape?
 #' @param darktext (boolean) Should the badge use dark text? This is often
 #'                 useful for brightly coloured badges.
@@ -30,21 +30,25 @@
 #'
 #' @export
 #'
-radminkitBadge <- function(type = "secondary", intent = FALSE, pill = FALSE, darktext = FALSE, text = NULL) {
+radminkitBadge <- function(type = "secondary",
+                           intent = FALSE,
+                           pill = FALSE,
+                           darktext = FALSE,
+                           text = NULL) {
   type <- tolower(type)
 
   if (!(type %in% validBadges)) {
-    stop("Invalid badge type. See ?radminkitBadge for details.")
+    stop("Invalid badge type. See ?radminkit_badge for details.")
   }
 
   badgeType <- paste0("badge bg-", type)
 
   if (pill) {
-    badgeType <- addClass(badgeType, "rounded-pill")
+    badgeType <- add_class(badgeType, "rounded-pill")
   }
 
   if (darktext) {
-    badgeType <- addClass(badgeType, "text-dark")
+    badgeType <- add_class(badgeType, "text-dark")
   }
 
   intentHtml <-
@@ -74,7 +78,12 @@ radminkitBadge <- function(type = "secondary", intent = FALSE, pill = FALSE, dar
 #'
 #' @export
 #'
-radminkitCard <- function(..., title = NULL, subtitle = NULL, header = NULL, footer = NULL, text) {
+radminkitCard <- function(...,
+                          title = NULL,
+                          subtitle = NULL,
+                          header = NULL,
+                          footer = NULL,
+                          text) {
   headerHtml <-
     div(
       class = "card-header",

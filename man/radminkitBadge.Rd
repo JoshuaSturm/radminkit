@@ -15,7 +15,7 @@ radminkitBadge(
 \arguments{
 \item{type}{Type of badge. For included Bootstrap options, see details}
 
-\item{intent}{(boolean) Is the badge intended to signal a message to the user?}
+\item{intent}{(boolean) Is the badge meant to signal a message to the user?}
 
 \item{pill}{(boolean) Should the badge have a rounded pill shape?}
 

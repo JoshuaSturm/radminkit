@@ -2,51 +2,59 @@
 #'
 #' @param title Brand title to use in the sidebar
 #' @param width (optional) Width of the sidebar
+#' @param header A \code{\link{radminkitHeader}} item
 #' @param ... Optional items to put in the sidebar. See Details sections
 #'
 #' @details
 #' The `title` can be text, an image, or both.
-#' To include mutliple objects, e.g. a picture and some text, wrap them in a list.
+#' To include mutliple objects, e.g. a picture and some text,
+#' wrap them in a list.
 #'
 #'
 #' @examples
 #' \dontrun{
-#' radminkitSidebar(title = list(img("path/to/img", alt = "description of image")))
+#' radminkitSidebar(
+#'   title = list(img("path/to/img", alt = "description of image"))
+#' )
 #' }
 #'
 #' @export
 #'
 radminkitSidebar <- function(..., title = NULL, width = NULL, header = NULL) {
-  width <- validateCssUnit(width)
+  width <- htmltools::validateCssUnit(width)
   update_width <- NULL
 
   if (!is.null(width)) {
-    update_width <- tags$head(style(HTML(gsub("_WIDTH_", width, fixed = TRUE, "
+    update_width <- tags$head(
+      tags$style(
+        HTML(gsub("_WIDTH_", width, fixed = TRUE, "
 
-      @media (max-width: 991.98px) and (min-width: 1px) {
-        .sidebar{
-          margin-left: -_WIDTH_;
+        @media (max-width: 991.98px) and (min-width: 1px) {
+          .sidebar{
+            margin-left: -_WIDTH_;
+          }
         }
-      }
 
-      [data-simplebar] {
-        width: _WIDTH_;
-      }
+        [data-simplebar] {
+          width: _WIDTH_;
+        }
 
-      .sidebar.collapsed {
-        margin-left: -_WIDTH_
-      }
+        .sidebar.collapsed {
+          margin-left: -_WIDTH_
+        }
 
-      .sidebar {
-        min-width: _WIDTH_;
-        max-width: _WIDTH_;
-      }
-    "))))
+        .sidebar {
+          min-width: _WIDTH_;
+          max-width: _WIDTH_;
+        }
+        "))
+      )
+    )
   }
 
   div(
     class = "wrapper",
-    nav(
+    tags$nav(
       class = "sidebar js-sidebar",
       id = "sidebar",
       update_width,
@@ -77,7 +85,10 @@ radminkitSidebar <- function(..., title = NULL, width = NULL, header = NULL) {
 #' @export
 #'
 sidebarTabs <- function(...) {
-  do.call(ul, c(class = "list-group", id = "menuTabs", role = "tablist", list(...)))
+  do.call(
+    tags$ul,
+    c(class = "list-group", id = "menuTabs", role = "tablist", list(...))
+  )
 }
 
 #' Create a sidebar section to split tabs by category.
@@ -87,7 +98,7 @@ sidebarTabs <- function(...) {
 #' @export
 #'
 sidebarSection <- function(label = "Section Label") {
-  li(
+  tags$li(
     class = "sidebar-header",
     label
   )
@@ -96,17 +107,28 @@ sidebarSection <- function(label = "Section Label") {
 #' Create a section entry
 #'
 #' @param tabName Name of the tab
-#' @param subitems Item(s) to add to the sidebar
+#' @param label Text to display on the tab link
 #' @param icon (Optional) icon to display next to the tab name
 #' @param href Link to tab
 #' @param itemTags (Optional) tags for the tab
+#' @param newTab If \code{href} is supplied, should the link open in a new
+#'   browser tab?
+#' @param ... (Optional) additional items to add to the tab
+#'    (e.g. a \code{\link{sidebarSubItem}})
 #'
 #' @details
-#' Radminkit uses \href{https://feathericons.com/}{Feather icons}; refer to their site for the full catalogue of options.
+#' Radminkit uses \href{https://feathericons.com/}{Feather icons};
+#'    refer to their site for the full catalogue of options.
 #'
 #' @export
 #'
-sidebarItem <- function(..., label = NULL, tabName = NULL, icon = NULL, itemTags = NULL, href = NULL, newTab = TRUE) {
+sidebarItem <- function(...,
+                        label = NULL,
+                        tabName = NULL,
+                        icon = NULL,
+                        itemTags = NULL,
+                        href = NULL,
+                        newTab = TRUE) {
   subItems <- list(...)
 
   if (!is.null(href) + !is.null(tabName) + (length(subItems) > 0) != 1) {
@@ -137,7 +159,7 @@ sidebarItem <- function(..., label = NULL, tabName = NULL, icon = NULL, itemTags
   # When there are no submenu items
   if (length(subItems) == 0L) {
     return(
-      li(
+      tags$li(
         class = "sidebar-item",
         # role = "presentation",
         a(
@@ -148,7 +170,8 @@ sidebarItem <- function(..., label = NULL, tabName = NULL, icon = NULL, itemTags
           href = paste0("#", tabName),
           `role` = if (isTabItem) "tab",
           `aria-controls` = tabName,
-          i(
+          target = target,
+          tags$i(
             class = "align-middle",
             `data-feather` = icon
           ),
@@ -162,14 +185,14 @@ sidebarItem <- function(..., label = NULL, tabName = NULL, icon = NULL, itemTags
   }
 
   # Where there are submenu items
-  li(
+  tags$li(
     class = "sidebar-item",
     a(
       class = "sidebar-link",
       `data-bs-target` = paste0("#", tabName),
       `data-bs-toggle` = "collapse",
       href = paste0("#", tabName),
-      i(
+      tags$i(
         class = "align-middle",
         `data-feather` = icon
       ),
@@ -178,12 +201,27 @@ sidebarItem <- function(..., label = NULL, tabName = NULL, icon = NULL, itemTags
         label
       )
     ),
-    do.call(ul, c(class = "sidebar-dropdown list-group collapse", id = tabName, `data-bs-parent` = "#sidebar", subItems))
+    do.call(
+      tags$ul,
+      c(
+        class = "sidebar-dropdown list-group collapse",
+        id = tabName,
+        `data-bs-parent` = "#sidebar",
+        subItems
+      )
+    )
   )
 }
 
+#' Create section sub-entry
+#'
+#' @param tabName Name of the subtab
+#' @param href Link to tab
+#' @param icon (Optional) icon to display next to the tab name
+#'
 #' @export
-sidebarSubitem <- function(tabName = NULL, href = NULL, icon = NULL) {
+#'
+sidebarSubItem <- function(tabName = NULL, href = NULL, icon = NULL) {
   if (!is.null(href) && !is.null(tabName)) {
     stop("Can't specify both href and tabName")
   }
@@ -204,7 +242,7 @@ sidebarSubitem <- function(tabName = NULL, href = NULL, icon = NULL) {
     }
   }
 
-  li(
+  tags$li(
     class = "sidebar-item",
     role = "presentation",
     a(
@@ -215,6 +253,7 @@ sidebarSubitem <- function(tabName = NULL, href = NULL, icon = NULL) {
       `data-bs-target` = paste0("#", tabName),
       `aria-controls` = tabName,
       `role` = if (isTabItem) "tab",
+      target = target,
       tabName
     )
   )

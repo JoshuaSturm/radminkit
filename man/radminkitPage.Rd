@@ -4,7 +4,7 @@
 \alias{radminkitPage}
 \title{Create a radminkit page}
 \usage{
-radminkitPage(header, sidebar, body = NULL, title = NULL, loader = TRUE)
+radminkitPage(header, sidebar, title = NULL, loader = TRUE)
 }
 \arguments{
 \item{header}{A header created with \code{\link{radminkitHeader}}}

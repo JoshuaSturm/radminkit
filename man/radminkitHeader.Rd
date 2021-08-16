@@ -9,11 +9,9 @@ radminkitHeader(disable = FALSE, body = NULL, ...)
 \arguments{
 \item{disable}{Disable the header}
 
+\item{body}{A \code{\link{radminkitBody}} item}
+
 \item{...}{Additional components to insert in the header. See details section}
-
-\item{title}{Dashboard title}
-
-\item{logo}{(Optional) Logo to display before title. Can be an icon or a link to an image.}
 }
 \description{
 Create a radminkit header

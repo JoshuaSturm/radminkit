@@ -8,14 +8,10 @@ tabItem(tabName = NULL, ...)
 }
 \arguments{
 \item{tabName}{The name of a tab. This must correspond to the \code{tabName}
-of a \code{\link{menuItem}} or \code{\link{menuSubItem}}.}
+of a \code{\link{sidebarItem}} or \code{\link{sidebarSubItem}}.}
 
 \item{...}{Contents of the tab.}
 }
 \description{
 One tab to put inside a tab items container
-}
-\seealso{
-\code{\link{menuItem}}, \code{\link{menuSubItem}},
-\code{\link{tabItems}}. See \code{\link{sidebarMenu}} for a usage example.
 }

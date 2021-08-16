@@ -8,11 +8,7 @@
 #'
 #' @export
 #'
-radminkitPage <- function(header, sidebar, body = NULL, title = NULL, loader = TRUE) {
-
-  # tagAssert(header, type = "header", class = "navbar main-header navbar-expand-lg navbar-light")
-  # tagAssert(sidebar, type = "nav", class = "main-sidebar")
-
+radminkitPage <- function(header, sidebar, title = NULL, loader = TRUE) {
   loaderHtml <-
     div(
       class = "loader-bg",
@@ -22,26 +18,22 @@ radminkitPage <- function(header, sidebar, body = NULL, title = NULL, loader = T
       )
     )
 
-
-  # tags$html(
-  head(
-    title(title),
-    meta(charset = "utf-8"),
-    meta(
+  tags$head(
+    tags$title(title),
+    tags$meta(charset = "utf-8"),
+    tags$meta(
       name = "viewport",
       content = "width=device-width, initial-scale=1, shrink-to-fit=no"
     ),
-    meta(`http-equiv` = "X-UA-Compatible", content = "IE=edge")
+    tags$meta(`http-equiv` = "X-UA-Compatible", content = "IE=edge")
   )
 
-  addDeps(
-    body(
+  add_deps(
+    tags$body(
       if (loader) loaderHtml,
       sidebar # ,
       # header#,
       # body
-      # HTML('<script async src="js/script.js"></script>')
     )
   )
-  # )
 }

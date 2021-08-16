@@ -14,6 +14,7 @@ tabItems(...)
 A container for tab items
 }
 \seealso{
-\code{\link{menuItem}}, \code{\link{menuSubItem}},
-\code{\link{tabItem}}. See \code{\link{sidebarMenu}} for a usage example.
+\code{\link{sidebarItem}}, \code{\link{sidebarSubItem}},
+\code{\link{tabItem}}.
+See \code{\link{radminkitSidebar}} for a usage example.
 }

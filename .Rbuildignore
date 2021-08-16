@@ -20,3 +20,4 @@
 ^altbootstrap$
 ^postcss\.config.js$
 ^\.pre-commit-config\.yaml$
+^\.lintr$

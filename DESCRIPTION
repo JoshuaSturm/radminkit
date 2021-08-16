@@ -8,7 +8,7 @@ Authors@R:
            email = "22535419+JoshuaSturm@users.noreply.github.com")
 Description: A Shiny dashboard template inspired by Adminkit.
 License: MIT + file LICENSE
-URL: https://joshuasturm.github.io/radminkit
+URL: https://joshuasturm.github.io/radminkit/
 Imports:
     htmltools,
     shiny

@@ -5,7 +5,7 @@
 #' @export
 #'
 radminkitBody <- function(...) {
-  main(
+  tags$main(
     class = "content",
     div(
       class = "container-fluid p-0",

@@ -3,8 +3,9 @@
 #' @param ... Items to put in the container. Each item should be a
 #'   \code{\link{tabItem}}.
 #'
-#' @seealso \code{\link{menuItem}}, \code{\link{menuSubItem}},
-#'   \code{\link{tabItem}}. See \code{\link{sidebarMenu}} for a usage example.
+#' @seealso \code{\link{sidebarItem}}, \code{\link{sidebarSubItem}},
+#'   \code{\link{tabItem}}.
+#'   See \code{\link{radminkitSidebar}} for a usage example.
 #'
 #' @export
 #'
@@ -20,11 +21,8 @@ tabItems <- function(...) {
 #' One tab to put inside a tab items container
 #'
 #' @param tabName The name of a tab. This must correspond to the \code{tabName}
-#'   of a \code{\link{menuItem}} or \code{\link{menuSubItem}}.
+#'   of a \code{\link{sidebarItem}} or \code{\link{sidebarSubItem}}.
 #' @param ... Contents of the tab.
-#'
-#' @seealso \code{\link{menuItem}}, \code{\link{menuSubItem}},
-#'   \code{\link{tabItems}}. See \code{\link{sidebarMenu}} for a usage example.
 #'
 #' @export
 #'
@@ -60,7 +58,10 @@ tabItem <- function(tabName = NULL, ...) {
 #'     dashboardSidebar(
 #'       sidebarMenu(
 #'         id = "tabs",
-#'         menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
+#'         menuItem(
+#'           "Dashboard",
+#'           tabName = "dashboard", icon = icon("dashboard")
+#'         ),
 #'         menuItem("Widgets", tabName = "widgets", icon = icon("th"))
 #'       ),
 #'       actionButton("switchtab", "Switch tab")

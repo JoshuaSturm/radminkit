@@ -1,23 +1,8 @@
-#
 # Majority of this code is adapted from that in Rstudio's
 #   shinydashboard package
-#
-
-# Add dependencies
-# #' @importFrom htmltools htmlDependency htmlDependencies
-# appendDependencies <- function(x, value) {
-#   if (inherits(value, "html_dependency")) {
-#     value <- list(value)
-#   }
-
-#   old <- attr(x, "html_dependencies", TRUE)
-
-#   htmlDependencies(x) <- c(old, value)
-#   x
-# }
 
 # Add dashboard dependencies to a tag object
-addDeps <- function(x) {
+add_deps <- function(x) {
   dashboardDeps <- list(
     htmlDependency(
       name = "appcss",
@@ -66,8 +51,6 @@ tagAssert <- function(tag, type = NULL, class = NULL, allowUI = TRUE) {
     if (is.null(tag$attribs$class)) {
       stop("Expected tag to have class '", class, "'")
     } else {
-      # tagClasses <- strsplit(tag$attribs$class, " ")[[1]]
-      # if (!(class %in% tagClasses)) {
       if (class != tag$attribs$class) {
         stop("Expected tag to have class '", class, "'")
       }
@@ -101,15 +84,6 @@ validBadges <- c(
 )
 
 # Append to an element's class
-addClass <- function(element, append) {
+add_class <- function(element, append) {
   return(paste(c(element, append), collapse = " "))
 }
-
-#' #' @export
-#' addJsDeps <- function() {
-#'   includeScript(system.file("jquery-ui/jquery-ui.min.js", package = "dattaableR"))
-#'   includeScript(system.file("js/vendor-all.min.js", package = "dattaableR"))
-#'   includeScript(system.file("bootstrap-4.5.2/popover.js", package = "dattaableR"))
-#'   includeScript(system.file("bootstrap-4.5.2/bootstrap.min.js", package = "dattaableR"))
-#'   includeScript(system.file("js/pcoded.min.js", package = "dattaableR"))
-#' }

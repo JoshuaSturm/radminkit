@@ -14,8 +14,12 @@ repos:
         exclude: >
           (?x)^(
           .*\.[rR]|
+          .*\.css
           .*\.feather|
           .*\.jpeg|
+          .*\.js|
+          .*\.json|
+          .*\.map|
           .*\.pdf|
           .*\.png|
           .*\.py|
@@ -23,6 +27,7 @@ repos:
           .*\.rds|
           .*\.Rds|
           .*\.Rproj|
+          .*\.scss|
           .*\.sh|
           (.*/|)\.gitignore|
           (.*/|)\.pre-commit-.*|
@@ -36,7 +41,12 @@ repos:
           (.*/|)renv\.lock|
           (.*/|)WORDLIST|
           \.github/workflows/.*|
+          build/.*|
+          check/.*|
           data/.*|
+          inst/.*|
+          node_modules/.|
+          srcjs/.*|
           )$
     -   id: lintr
     -   id: readme-rmd-rendered
@@ -47,7 +57,7 @@ repos:
     rev: v1.2.3
     hooks: 
     -   id: check-added-large-files
-        args: ['--maxkb=200']
+        args: ['--maxkb=999']
     -   id: end-of-file-fixer
         exclude: '\.Rd'
 -   repo: local
